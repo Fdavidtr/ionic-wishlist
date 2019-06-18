@@ -9,6 +9,13 @@ export class WishlistService {
   wishlists: Wishlist[] = []
 
   constructor() {
-    console.log('wishlist service constructor');
+    const list1 = new Wishlist('Recolectar gemas del infinito');
+    const list2 = new Wishlist('Eliminar');
+
+    this.wishlists.push(list1, list2);
+  }
+
+  getWishlists(): Wishlist[] {
+    return this.wishlists;
   }
 }

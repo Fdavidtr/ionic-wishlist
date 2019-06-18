@@ -13,6 +13,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
+          },
+          {
+            path: 'add-wishlist',
+            loadChildren: '../add-wishlist/add-wishlist.module#AddWishlistPageModule'
           }
         ]
       },
