@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AddWishlistPage } from './add-wishlist.page';
+import { AddWishlistItemPage } from './add-wishlist-item.page';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: AddWishlistPage
+    component: AddWishlistItemPage
   }
 ];
 
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [AddWishlistPage]
+  declarations: [AddWishlistItemPage]
 })
 export class AddWishlistPageModule {}

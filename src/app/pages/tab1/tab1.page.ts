@@ -41,7 +41,9 @@ export class Tab1Page {
             if (data.title.length < 1) {
               return;
             }
-            this.wishlistService.createWishlist(data.title)
+            const wl = this.wishlistService.createWishlist(data.title);
+
+            this.router.navigateByUrl(`/tabs/tab1/add-wishlist-item/${wl.id}`);
           }
         }
       ]

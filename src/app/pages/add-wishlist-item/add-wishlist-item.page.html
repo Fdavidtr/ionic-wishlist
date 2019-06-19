@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>addWishlist</ion-title>
+    <ion-title>{{ wishlist.title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +11,8 @@
   <ion-list color="dark">
     <ion-item color="dark">
       <ion-label position="floating">New item</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="itemName" (keyup.enter)="addItem()"></ion-input>
+      <ion-button (click)="addItem()" color="tertiary">Add item</ion-button>
     </ion-item>
   </ion-list>
 
@@ -20,9 +21,9 @@
       <ion-label>Tasks</ion-label>
     </ion-list-header>
 
-    <ion-item color="dark">
+    <ion-item color="dark" *ngFor="let item of wishlist.items">
       <ion-checkbox color="tertiary" slot="start"></ion-checkbox>
-      <ion-label>Recordar comer</ion-label>
+      <ion-label>{{ item.desc }}</ion-label>
     </ion-item>
   </ion-list>
 

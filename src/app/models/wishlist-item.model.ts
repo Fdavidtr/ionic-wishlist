@@ -1,11 +1,16 @@
 
-export class WishlistItem {
+export class WishlistItem implements WishlistItemInterface {
 
     desc: string;
     completed: boolean;
 
-    constructor( desc: string) {
+    constructor( {desc, completed = false}: WishlistItemInterface ) {
         this.desc = desc;
-        this.completed = false;
+        this.completed = completed;
     }
+}
+
+interface WishlistItemInterface {
+    desc: string;
+    completed?: boolean;
 }

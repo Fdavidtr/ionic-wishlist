@@ -15,8 +15,8 @@ const routes: Routes = [
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
           },
           {
-            path: 'add-wishlist',
-            loadChildren: '../add-wishlist/add-wishlist.module#AddWishlistPageModule'
+            path: 'add-wishlist-item/:wl_id',
+            loadChildren: '../add-wishlist-item/add-wishlist-item.module#AddWishlistPageModule'
           }
         ]
       },

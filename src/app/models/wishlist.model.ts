@@ -1,6 +1,6 @@
 import {WishlistItem} from './wishlist-item.model';
 
-export class Wishlist {
+export class Wishlist implements WishlistInterface {
 
     id: number;
     title: string;
@@ -9,11 +9,24 @@ export class Wishlist {
     completed: boolean;
     items: WishlistItem[];
 
-    constructor(title: string ) {
+    constructor( { title, id, createdAt, completed = false, items = [] }: WishlistInterface ) {
         this.title = title;
-        this.id = new Date().getTime();
-        this.createdAt = new Date();
-        this.completed = false;
-        this.items = [];
+        this.id = id || new Date().getTime();
+        this.createdAt = createdAt || new Date();
+        this.completed = completed;
+        this.items = items.map(e => (e instanceof WishlistItem) ? e : new WishlistItem(e));
     }
+
+    addItem(item: WishlistItem) {
+        this.items.push(item);
+    }
+}
+
+interface WishlistInterface {
+    title: string;
+    id?: number;
+    createdAt?: Date;
+    completed?: boolean;
+    completedAt?: Date;
+    items?: WishlistItem[];
 }
