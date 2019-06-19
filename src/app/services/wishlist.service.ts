@@ -18,4 +18,10 @@ export class WishlistService {
   getWishlists(): Wishlist[] {
     return this.wishlists;
   }
+
+  createWishlist( title: string ) {
+    const wl = new Wishlist(title);
+    this.wishlists.push( wl );
+  }
+
 }

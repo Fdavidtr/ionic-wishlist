@@ -1,9 +1,29 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header no-border>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title>addWishlist</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="dark">
+  <ion-list color="dark">
+    <ion-item color="dark">
+      <ion-label position="floating">New item</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header color="dark">
+      <ion-label>Tasks</ion-label>
+    </ion-list-header>
+
+    <ion-item color="dark">
+      <ion-checkbox color="tertiary" slot="start"></ion-checkbox>
+      <ion-label>Recordar comer</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
