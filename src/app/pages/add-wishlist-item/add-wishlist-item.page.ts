@@ -35,4 +35,21 @@ export class AddWishlistItemPage implements OnInit {
     this.itemName = '';
     this.wishlistService.saveStorage();
   }
+
+  toggleCompleted(item: WishlistItem) {
+    const hasPendings = this.wishlist.items.find(e => e.completed === false);
+    if( !hasPendings ) {
+      this.wishlist.completed = true;
+      this.wishlist.completedAt = new Date();
+    } else {
+      this.wishlist.completed = false;
+      this.wishlist.completedAt = null;
+    }
+    this.wishlistService.saveStorage();
+  }
+
+  deleteItem(item: WishlistItem) {
+    this.wishlist.items = this.wishlist.items.filter(e => e !== item );
+    this.wishlistService.saveStorage();
+  }
 }

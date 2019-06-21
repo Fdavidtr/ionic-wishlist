@@ -8,7 +8,7 @@
 
 <ion-content color="dark">
   <ion-list color="dark">
-    <ion-item color="dark" *ngFor="let wishlist of wishlists" detail>
+    <ion-item color="dark" *ngFor="let wishlist of getPendingsWishlists()" detail (click)="handleWishlistClick(wishlist)">
       <ion-label>{{ wishlist.title }}</ion-label>
     </ion-item>
   </ion-list>

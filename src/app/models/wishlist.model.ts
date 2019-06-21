@@ -9,11 +9,12 @@ export class Wishlist implements WishlistInterface {
     completed: boolean;
     items: WishlistItem[];
 
-    constructor( { title, id, createdAt, completed = false, items = [] }: WishlistInterface ) {
+    constructor( { title, id, createdAt, completed = false, items = [], completedAt=null }: WishlistInterface ) {
         this.title = title;
         this.id = id || new Date().getTime();
         this.createdAt = createdAt || new Date();
         this.completed = completed;
+        this.completedAt = completedAt;
         this.items = items.map(e => (e instanceof WishlistItem) ? e : new WishlistItem(e));
     }
 

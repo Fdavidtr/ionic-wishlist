@@ -43,7 +43,7 @@ export class Tab1Page {
             }
             const wl = this.wishlistService.createWishlist(data.title);
 
-            this.router.navigateByUrl(`/tabs/tab1/add-wishlist-item/${wl.id}`);
+            this.navigateToWishlist(wl);
           }
         }
       ]
@@ -51,4 +51,16 @@ export class Tab1Page {
     await alert.present();
   }
 
+  navigateToWishlist(wishlist: Wishlist) {
+    this.router.navigateByUrl(`/tabs/tab1/add-wishlist-item/${wishlist.id}`);
+  }
+
+  handleWishlistClick(wishlist) {
+    console.log(wishlist);
+    this.navigateToWishlist(wishlist);
+  }
+
+  getPendingsWishlists(): Wishlist[] {
+    return this.wishlists.filter(e => e.completed !== true );
+  }
 }
