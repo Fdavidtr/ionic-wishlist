@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {Wishlist} from '../../models/wishlist.model';
+import {WishlistService} from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  wishlists: Wishlist[];
+
+  constructor(wishlistService: WishlistService) {
+    this.wishlists = wishlistService.getWishlists();
+  }
+
+  getDoneWishlists(): Wishlist[] {
+    return this.wishlists.filter(e => e.completed === true );
+  }
 
 }

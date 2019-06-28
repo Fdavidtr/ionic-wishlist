@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Wishlist} from '../models/wishlist.model';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class WishlistService {
 
   wishlists: Wishlist[];
 
-  constructor() {
+  constructor(private router: Router) {
     this.wishlists = this.getStorage();
   }
 
@@ -25,6 +26,10 @@ export class WishlistService {
     this.wishlists.push( wl );
     this.saveStorage();
     return wl;
+  }
+
+  navigateToWishlist(wishlist: Wishlist) {
+    this.router.navigateByUrl(`/tabs/tab1/add-wishlist-item/${wishlist.id}`);
   }
 
   saveStorage() {

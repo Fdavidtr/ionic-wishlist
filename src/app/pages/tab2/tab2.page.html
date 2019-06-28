@@ -1,9 +1,12 @@
 <ion-header no-border>
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Tab Two
+      Pendientes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark">
+  <!-- lista here -->
+  <app-lists [wishlists]="getDoneWishlists()"></app-lists>
+</ion-content>
