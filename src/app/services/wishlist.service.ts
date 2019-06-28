@@ -29,7 +29,7 @@ export class WishlistService {
   createWishlist( title: string ): Wishlist {
     //TODO
     const wl = new Wishlist({title});
-    this.setWishlists( [...this.getWishlists().getValue(), wl] );
+    this.setWishlists( [...this.wishlists.getValue(), wl] );
     this.saveStorage();
     return wl;
   }
