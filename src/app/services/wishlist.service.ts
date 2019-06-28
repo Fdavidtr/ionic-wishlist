@@ -1,31 +1,48 @@
 import { Injectable } from '@angular/core';
 import {Wishlist} from '../models/wishlist.model';
 import {Router} from '@angular/router';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WishlistService {
 
-  wishlists: Wishlist[];
+  //wishlists: Wishlist[];
+
+  private wishlists = new BehaviorSubject<Wishlist[]>([]);
 
   constructor(private router: Router) {
-    this.wishlists = this.getStorage();
+    this.setWishlists(this.getStorage());
+    console.log(this.wishlists);
   }
 
-  getWishlists(): Wishlist[] {
-    return this.wishlists;
+  getWishlists(): Observable<Wishlist[]> {
+    return this.wishlists.asObservable();
   }
 
   getWishlist(id: number): Wishlist {
-    return this.wishlists.find(e => e.id === id);
+    return this.wishlists.getValue().find( i => i.id === id);
   }
 
+
   createWishlist( title: string ): Wishlist {
+    //TODO
     const wl = new Wishlist({title});
-    this.wishlists.push( wl );
+    //this.wishlists.push( wl );
     this.saveStorage();
     return wl;
+  }
+
+  setWishlists(wishlists: Wishlist[]) {
+    this.wishlists.next(wishlists);
+  }
+
+  deleteWishlist(wishlist: Wishlist) {
+    const wishlists = this.wishlists.getValue().filter(e => e.id !== wishlist.id);
+    this.setWishlists(wishlists);
+    this.saveStorage();
+    return this.wishlists;
   }
 
   navigateToWishlist(wishlist: Wishlist, fromDone: boolean) {
@@ -34,7 +51,7 @@ export class WishlistService {
   }
 
   saveStorage() {
-    localStorage.setItem('wishlists', JSON.stringify(this.wishlists));
+    localStorage.setItem('wishlists', JSON.stringify(this.wishlists.getValue()));
   }
 
   getStorage(): Wishlist[] {

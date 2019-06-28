@@ -11,16 +11,19 @@ import {AlertController} from '@ionic/angular';
 })
 export class Tab1Page {
 
-  wishlists: Wishlist[];
+  wishlists: Wishlist[] = [];
 
   constructor(private wishlistService: WishlistService,
               private router: Router,
               private alertCtrl: AlertController) {
-    this.wishlists = wishlistService.getWishlists();
+    wishlistService.getWishlists().subscribe(e => {
+      console.log(e);
+      this.wishlists = e;
+    });
   }
 
   async addWList() {
-    //this.router.navigateByUrl('/tabs/tab1/add-wishlist');
+
     const alert = await this.alertCtrl.create({
       header:'Nueva lista',
       inputs: [
@@ -43,7 +46,7 @@ export class Tab1Page {
             }
             const wl = this.wishlistService.createWishlist(data.title);
 
-            this.wishlistService.navigateToWishlist(wl);
+            this.wishlistService.navigateToWishlist(wl,false);
           }
         }
       ]

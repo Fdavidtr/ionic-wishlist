@@ -1,6 +1,11 @@
-<ion-list color="dark">
-  <ion-item color="dark" *ngFor="let wishlist of wishlists" detail (click)="handleWishlistClick(wishlist)">
-    <ion-label>{{ wishlist.title }}</ion-label>
-    <ion-note slot="end" color="tertiary">{{ wishlist.items.length }}</ion-note>
-  </ion-item>
-</ion-list>
+<ion-item-sliding *ngFor="let wishlist of wishlists">
+  <ion-list color="dark">
+    <ion-item color="dark" detail (click)="handleWishlistClick(wishlist)">
+      <ion-label>{{ wishlist.title }}</ion-label>
+      <ion-note slot="end" color="tertiary">{{ wishlist.items.length }}</ion-note>
+    </ion-item>
+    <ion-item-options side="end">
+      <ion-icon slot="icon-only" size="large" name="trash" (click)="deleteItem(wishlist)"></ion-icon>
+    </ion-item-options>
+  </ion-list>
+</ion-item-sliding>

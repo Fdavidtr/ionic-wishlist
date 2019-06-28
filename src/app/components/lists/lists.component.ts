@@ -16,8 +16,12 @@ export class ListsComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleWishlistClick(wishlist) {
+  handleWishlistClick(wishlist: Wishlist) {
     this.wishlistService.navigateToWishlist(wishlist, this.fromDone);
+  }
+
+  deleteItem(wishlist: Wishlist) {
+    this.wishlistService.deleteWishlist(wishlist);
   }
 
 }

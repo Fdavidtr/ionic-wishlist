@@ -12,7 +12,7 @@ export class Tab2Page {
   wishlists: Wishlist[];
 
   constructor(wishlistService: WishlistService) {
-    this.wishlists = wishlistService.getWishlists();
+     wishlistService.getWishlists().subscribe(e => this.wishlists = e);
   }
 
   getDoneWishlists(): Wishlist[] {
