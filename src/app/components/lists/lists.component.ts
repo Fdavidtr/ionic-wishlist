@@ -9,6 +9,7 @@ import {WishlistService} from '../../services/wishlist.service';
 })
 export class ListsComponent implements OnInit {
 
+  @Input() fromDone = true;
   @Input() wishlists: Wishlist[];
 
   constructor(private wishlistService: WishlistService) { }
@@ -16,8 +17,7 @@ export class ListsComponent implements OnInit {
   ngOnInit() {}
 
   handleWishlistClick(wishlist) {
-    console.log(wishlist);
-    this.wishlistService.navigateToWishlist(wishlist);
+    this.wishlistService.navigateToWishlist(wishlist, this.fromDone);
   }
 
 }

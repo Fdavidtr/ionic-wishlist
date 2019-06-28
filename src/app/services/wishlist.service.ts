@@ -28,8 +28,9 @@ export class WishlistService {
     return wl;
   }
 
-  navigateToWishlist(wishlist: Wishlist) {
-    this.router.navigateByUrl(`/tabs/tab1/add-wishlist-item/${wishlist.id}`);
+  navigateToWishlist(wishlist: Wishlist, fromDone: boolean) {
+    const url = fromDone ? '/tabs/tab2/add-wishlist-item/' : '/tabs/tab1/add-wishlist-item/';
+    this.router.navigateByUrl(`${url}${wishlist.id}`);
   }
 
   saveStorage() {

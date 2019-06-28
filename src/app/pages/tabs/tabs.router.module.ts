@@ -26,6 +26,10 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: '../tab2/tab2.module#Tab2PageModule'
+          },
+          {
+            path: 'add-wishlist-item/:wl_id',
+            loadChildren: '../add-wishlist-item/add-wishlist-item.module#AddWishlistPageModule'
           }
         ]
       },

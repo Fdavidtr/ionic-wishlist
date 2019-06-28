@@ -1,14 +1,14 @@
 <ion-header no-border>
   <ion-toolbar color="dark">
     <ion-title>
-      Pendientes
+      Pending Lists
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="dark">
 <!-- lista here -->
-  <app-lists [wishlists]="getPendingsWishlists()"></app-lists>
+  <app-lists [wishlists]="getPendingsWishlists()" [fromDone]="false" ></app-lists>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="tertiary"
