@@ -17,7 +17,6 @@ export class Tab1Page {
               private router: Router,
               private alertCtrl: AlertController) {
     wishlistService.getWishlists().subscribe(e => {
-      console.log(e);
       this.wishlists = e;
     });
   }
@@ -25,7 +24,7 @@ export class Tab1Page {
   async addWList() {
 
     const alert = await this.alertCtrl.create({
-      header:'Nueva lista',
+      header: 'New List',
       inputs: [
         {
           name: 'title',

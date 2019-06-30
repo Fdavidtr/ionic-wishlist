@@ -38,7 +38,7 @@ export class AddWishlistItemPage implements OnInit {
 
   toggleCompleted(item: WishlistItem) {
     const hasPendings = this.wishlist.items.find(e => e.completed === false);
-    if( !hasPendings ) {
+    if (!hasPendings) {
       this.wishlist.completed = true;
       this.wishlist.completedAt = new Date();
     } else {

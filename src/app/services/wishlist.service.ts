@@ -27,7 +27,6 @@ export class WishlistService {
 
 
   createWishlist( title: string ): Wishlist {
-    //TODO
     const wl = new Wishlist({title});
     this.setWishlists( [...this.wishlists.getValue(), wl] );
     this.saveStorage();
@@ -36,6 +35,12 @@ export class WishlistService {
 
   setWishlists(wishlists: Wishlist[]) {
     this.wishlists.next(wishlists);
+  }
+
+
+  renameItem(wishlist: Wishlist, {title}: {title: string}) {
+    wishlist.title = title;
+    this.saveStorage();
   }
 
   deleteWishlist(wishlist: Wishlist) {
