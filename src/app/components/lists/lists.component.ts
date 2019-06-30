@@ -39,20 +39,21 @@ export class ListsComponent implements OnInit {
       ],
       buttons: [{
         text: 'Cancel',
-        role: 'cancel'
-      },
-        {
-          text: 'Rename',
-          handler: async (data) => {
-            console.log(data);
-            if (data.title.length < 1) {
-              return;
-            }
-            console.log(this.ionList);
-            await this.ionList.closeSlidingItems();
-            this.wishlistService.renameItem(wishlist, {title: data.title});
+        role: 'cancel',
+        handler: async () => await this.ionList.closeSlidingItems()
+  },
+      {
+        text: 'Rename',
+        handler: async (data) => {
+          console.log(data);
+          if (data.title.length < 1) {
+            return;
           }
+          console.log(this.ionList);
+          await this.ionList.closeSlidingItems();
+          this.wishlistService.renameItem(wishlist, {title: data.title});
         }
+      }
       ]
     });
     await alert.present();
